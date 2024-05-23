@@ -12,6 +12,8 @@ public:
 	bool push_back(T ele);
 	bool push_front(T ele);
 	bool insertAt(T ele, int i);
+	int size() const;
+	bool isSorted() const;
 	bool popAt(T ele, int index);
 	bool pop_back();
 	bool pop_front();

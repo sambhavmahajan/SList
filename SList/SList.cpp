@@ -62,6 +62,22 @@ bool SList<T>::insertAt(T ele, int i)
 }
 
 template<typename T>
+int SList<T>::size() const
+{
+	return _maxIdx + 1;
+}
+
+template<typename T>
+bool SList<T>::isSorted() const
+{
+	if (_maxIdx == -1) return true;
+	for (int i = 0; i < _maxIdx; i++) {
+		if (arr[i] > arr[i + 1]) return false;
+	}
+	return true;
+}
+
+template<typename T>
 bool SList<T>::popAt(T ele, int index)
 {
 	if (index < 0 || index > _maxIdx) return false;
