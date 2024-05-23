@@ -47,9 +47,15 @@ bool SList<T>::insertAt(T ele, int i)
 			delete[] arr;
 			arr = temp;
 			_size *= 2;
+			++_max_idx;
 		}
-		++_maxIdx
-		arr[i] = ele;
+		else {
+			++_maxIdx;
+			for (int k = max_idx + 1; k > i; k++) {//Shift ele to right
+				arr[k] = arr[k - 1];
+			}
+			arr[i] = ele;
+		}
 		return true;
 	}
 }
