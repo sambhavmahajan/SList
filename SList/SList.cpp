@@ -1,6 +1,5 @@
 #include "SList.h"
 
-
 template<typename T>
 SList<T>::SList()
 {
@@ -38,14 +37,33 @@ bool SList<T>::insertAt(T ele, int i)
 	else {
 		if (i + 1 == _size) {//list is full
 			T* temp = new T[_size * 2];
-			for (int k = 0; k < _size; k++) {
+			for (int k = 0; k <  i; k++) {
 				temp[k] = arr[k];
+			}
+			temp[i] = ele;
+			for (int k = i + 1; k < _size; k++) {
+				temp[k] = arr[k - 1];
 			}
 			delete[] arr;
 			arr = temp;
 			_size *= 2;
 		}
-		arr[++_maxIdx] = ele;
+		++_maxIdx
+		arr[i] = ele;
 		return true;
 	}
+}
+
+template<typename T>
+T& SList<T>::at(int index) const
+{
+	if (index < 0 || index >= _size) return defaultBuffer;
+	else if (_size == 0) return defaultBuffer;
+	return arr[index];
+}
+
+template<typename T>
+SList<T>::~SList()
+{
+	delete[] arr;
 }
