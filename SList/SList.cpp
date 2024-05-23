@@ -23,7 +23,7 @@ bool SList<T>::push_front(T ele)
 template<typename T>
 bool SList<T>::insertAt(T ele, int i)
 {
-	if (_size == 0) {// list if empty
+	if (arr == nullptr) {// list if empty
 		if (i == 0) {
 			_size = 1;
 			arr = new T[1];
@@ -84,13 +84,14 @@ bool SList<T>::popAt(T ele, int index)
 	for (int i = index; i < _maxIndex; i++) {
 		arr[i] = arr[i + 1];
 	}
+	_maxIdx--;
 	return true;
 }
 
 template<typename T>
 bool SList<T>::pop_back()
 {
-	if (_size == 0) return false;
+	if (_maxIdx == -1) return false;
 	_maxIdx--;
 	return true;
 }
@@ -98,7 +99,7 @@ bool SList<T>::pop_back()
 template<typename T>
 bool SList<T>::pop_front()
 {
-	if (_size == 0) return false;
+	if (_maxIdx == -1) return false;
 	for (int i = 0; i < maxIdx; i++) {
 		arr[i] = arr[i + 1];
 	}
@@ -108,7 +109,7 @@ bool SList<T>::pop_front()
 template<typename T>
 bool SList<T>::isPalindromic() const
 {
-	if (_size == 0) return true;//empty list is palindromic
+	if (_maxIdx == -1) return true;//empty list is palindromic
 	int l = 0;
 	int r = _maxIdx;
 	while (l < r) {
@@ -120,7 +121,7 @@ bool SList<T>::isPalindromic() const
 template<typename T>
 void SList<T>::reverse()
 {
-	if (_size == 0) return;
+	if (_maxIdx == -1) return;
 	T temp;
 	for (int i = 0; i <= _maxIdx; i++) {
 		temp = arr[i];
