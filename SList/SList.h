@@ -19,6 +19,8 @@ public:
 	bool pop_front();
 	bool isPalindromic() const;
 	void reverse();
+	int find(T ele);
+	int binarySearch(T ele);
 	T& at(int index) const;
 	~SList();
 };

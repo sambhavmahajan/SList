@@ -130,6 +130,32 @@ void SList<T>::reverse()
 }
 
 template<typename T>
+int SList<T>::find(T ele)
+{
+	if (_maxIdx == -1) return -1;
+	for (int i = 0; i <= _maxIdx; i++) {
+		if (arr[i] == ele) return i;
+	}
+	return -1;
+}
+
+template<typename T>
+int SList<T>::binarySearch(T ele)
+{
+	if (_maxIdx == -1) return -1;
+	int l = 0;
+	int r = _maxIdx;
+	int m;
+	while (l < r) {
+		m = (l + r) / 2;
+		if (arr[m] == ele) return m;
+		else if (arr[m] > ele) r = m - 1;
+		else l = m + 1;
+	}
+	return -1;
+}
+
+template<typename T>
 T& SList<T>::at(int index) const
 {
 	if (index < 0 || index >= _size) return defaultBuffer;
