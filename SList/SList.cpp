@@ -90,6 +90,30 @@ bool SList<T>::pop_front()
 }
 
 template<typename T>
+bool SList<T>::isPalindromic() const
+{
+	if (_size == 0) return true;//empty list is palindromic
+	int l = 0;
+	int r = _maxIdx;
+	while (l < r) {
+		if (arr[l++] != arr[r--]) return false;
+	}
+	return true;
+}
+
+template<typename T>
+void SList<T>::reverse()
+{
+	if (_size == 0) return;
+	T temp;
+	for (int i = 0; i <= _maxIdx; i++) {
+		temp = arr[i];
+		arr[i] = arr[_maxIdx - i];
+		arr[_maxIdx] = temp;
+	}
+}
+
+template<typename T>
 T& SList<T>::at(int index) const
 {
 	if (index < 0 || index >= _size) return defaultBuffer;

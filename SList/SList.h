@@ -15,6 +15,8 @@ public:
 	bool popAt(T ele, int index);
 	bool pop_back();
 	bool pop_front();
+	bool isPalindromic() const;
+	void reverse();
 	T& at(int index) const;
 	~SList();
 };
