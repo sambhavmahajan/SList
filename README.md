@@ -1,6 +1,6 @@
 # SList: List Implementation in C++
 
-'SList' is a data structures that provides basic functionalities such as insertion, deletion, searching, sorting check, reversing, and more.
+'SList' is a data structure that provides basic functionalities such as insertion, deletion, searching, sorting check, reversing, and more.
 
 ## Features
 
