@@ -164,6 +164,20 @@ T& SList<T>::at(int index) const
 }
 
 template<typename T>
+T* SList<T>::begin() const
+{
+	if (_maxIdx == -1) return nullptr;
+	else return arr;
+}
+
+template<typename T>
+T* SList<T>::end() const
+{
+	if (_maxIdx == -1) return nullptr;
+	else return (arr + _maxIdx);
+}
+
+template<typename T>
 SList<T>::~SList()
 {
 	delete[] arr;

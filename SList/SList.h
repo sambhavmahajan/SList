@@ -22,6 +22,8 @@ public:
 	int find(T ele);
 	int binarySearch(T ele);
 	T& at(int index) const;
+	T* begin() const;
+	T* end() const;
 	~SList();
 };
 
