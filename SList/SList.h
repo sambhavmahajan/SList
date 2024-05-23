@@ -12,6 +12,9 @@ public:
 	bool push_back(T ele);
 	bool push_front(T ele);
 	bool insertAt(T ele, int i);
+	bool popAt(T ele, int index);
+	bool pop_back();
+	bool pop_front();
 	T& at(int index) const;
 	~SList();
 };

@@ -6,6 +6,7 @@ SList<T>::SList()
 	_size = 0;
 	_maxIdx = -1;
 	arr = nullptr;
+	defaultBuffer = T();
 }
 template<typename T>
 bool SList<T>::push_back(T ele)
@@ -58,6 +59,34 @@ bool SList<T>::insertAt(T ele, int i)
 		}
 		return true;
 	}
+}
+
+template<typename T>
+bool SList<T>::popAt(T ele, int index)
+{
+	if (index < 0 || index > _maxIdx) return false;
+	for (int i = index; i < _maxIndex; i++) {
+		arr[i] = arr[i + 1];
+	}
+	return true;
+}
+
+template<typename T>
+bool SList<T>::pop_back()
+{
+	if (_size == 0) return false;
+	_maxIdx--;
+	return true;
+}
+
+template<typename T>
+bool SList<T>::pop_front()
+{
+	if (_size == 0) return false;
+	for (int i = 0; i < maxIdx; i++) {
+		arr[i] = arr[i + 1];
+	}
+	return true;
 }
 
 template<typename T>
