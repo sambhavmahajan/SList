@@ -123,8 +123,7 @@ void SList<T>::reverse()
 {
 	if (_maxIdx == -1) return;
 	T temp;
-	const int n = _maxIdx / 2;
-	for (int i = 0; i < _maxIdx / 2; i++) {
+	for (int i = 0; i <= _maxIdx; i++) {
 		temp = arr[i];
 		arr[i] = arr[_maxIdx - i];
 		arr[_maxIdx] = temp;
