@@ -127,7 +127,7 @@ void SList<T>::reverse()
 	for (int i = 0; i < n; i++) {
 		temp = arr[i];
 		arr[i] = arr[_maxIdx - i];
-		arr[_maxIdx] = temp;
+		arr[_maxIdx - i] = temp;
 	}
 }
 
