@@ -9,19 +9,19 @@ SList<T>::SList()
 	defaultBuffer = T();
 }
 template<typename T>
-bool SList<T>::push_back(T ele)
+bool SList<T>::push_back(const T &ele)
 {
 	return insertAt(ele, _size);
 }
 
 template<typename T>
-bool SList<T>::push_front(T ele)
+bool SList<T>::push_front(const T &ele)
 {
 	return insertAt(ele, 0);
 }
 
 template<typename T>
-bool SList<T>::insertAt(T ele, int i)
+bool SList<T>::insertAt(const T &ele, const int &i)
 {
 	if (arr == nullptr) {// list if empty
 		if (i == 0) {
@@ -48,11 +48,11 @@ bool SList<T>::insertAt(T ele, int i)
 			delete[] arr;
 			arr = temp;
 			_size *= 2;
-			++_max_idx;
+			++_maxIdx;
 		}
 		else {
 			++_maxIdx;
-			for (int k = max_idx + 1; k > i; k++) {//Shift ele to right
+			for (int k = _maxIdx + 1; k > i; k++) {//Shift ele to right
 				arr[k] = arr[k - 1];
 			}
 			arr[i] = ele;
@@ -78,10 +78,10 @@ bool SList<T>::isSorted() const
 }
 
 template<typename T>
-bool SList<T>::popAt(T ele, int index)
+bool SList<T>::popAt(const T &ele, const int &index)
 {
 	if (index < 0 || index > _maxIdx) return false;
-	for (int i = index; i < _maxIndex; i++) {
+	for (int i = index; i < _maxIdx; i++) {
 		arr[i] = arr[i + 1];
 	}
 	_maxIdx--;
@@ -100,7 +100,7 @@ template<typename T>
 bool SList<T>::pop_front()
 {
 	if (_maxIdx == -1) return false;
-	for (int i = 0; i < maxIdx; i++) {
+	for (int i = 0; i < _maxIdx; i++) {
 		arr[i] = arr[i + 1];
 	}
 	return true;
@@ -131,7 +131,7 @@ void SList<T>::reverse()
 }
 
 template<typename T>
-int SList<T>::find(T ele)
+int SList<T>::find(const T &ele) const
 {
 	if (_maxIdx == -1) return -1;
 	for (int i = 0; i <= _maxIdx; i++) {
@@ -141,7 +141,29 @@ int SList<T>::find(T ele)
 }
 
 template<typename T>
-int SList<T>::binarySearch(T ele)
+int SList<T>::findAfter(const T &ele, int index) const
+{
+	++index;
+	if (index < 0 || index > _maxIdx) return -1;
+	while (index <= _maxIdx) {
+		if (arr[index] == ele) return index;
+		index++;
+	}
+	return -1;
+}
+
+template<typename T>
+int SList<T>::count(const T &ele) const
+{
+	int res = 0;
+	for (int i = 0; i <= _maxIdx; i++) {
+		if (arr[i] == ele) ++res;
+	}
+	return res;
+}
+
+template<typename T>
+int SList<T>::binarySearch(const T &ele)
 {
 	if (_maxIdx == -1) return -1;
 	int l = 0;
@@ -157,7 +179,7 @@ int SList<T>::binarySearch(T ele)
 }
 
 template<typename T>
-T& SList<T>::at(int index) const
+T& SList<T>::at(const int &index) const
 {
 	if (index < 0 || index >= _size) return defaultBuffer;
 	else if (_size == 0) return defaultBuffer;

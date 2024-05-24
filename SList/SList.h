@@ -9,19 +9,21 @@ private:
 	T defaultBuffer;
 public:
 	SList();
-	bool push_back(T ele);
-	bool push_front(T ele);
-	bool insertAt(T ele, int i);
+	bool push_back(const T& ele);
+	bool push_front(const T &ele);
+	bool insertAt(const T &ele, const int &i);
 	int size() const;
 	bool isSorted() const;
-	bool popAt(T ele, int index);
+	bool popAt(const T &ele,const int &index);
 	bool pop_back();
 	bool pop_front();
 	bool isPalindromic() const;
 	void reverse();
-	int find(T ele);
-	int binarySearch(T ele);
-	T& at(int index) const;
+	int find(const T &ele) const;
+	int findAfter(const T &ele, int index) const;
+	int count(const T &ele) const;
+	int binarySearch(const T &ele);
+	T& at(const int &index) const;
 	T* begin() const;
 	T* end() const;
 	~SList();
