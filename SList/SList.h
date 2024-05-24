@@ -9,6 +9,8 @@ private:
 	T defaultBuffer;
 public:
 	SList();
+	SList(T* list, int n);
+	SList(const SList& li);
 	bool push_back(const T& ele);
 	bool push_front(const T &ele);
 	bool insertAt(const T &ele, const int &i);

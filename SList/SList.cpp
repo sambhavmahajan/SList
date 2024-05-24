@@ -9,6 +9,28 @@ SList<T>::SList()
 	defaultBuffer = T();
 }
 template<typename T>
+SList<T>::SList(T* list, int n)
+{
+	_size = n;
+	_maxIdx = n - 1;
+	arr = new T[n];
+	for (int i = 0; i < n; i++) {
+		arr[i] = list[i];
+	}
+}
+template<typename T>
+SList<T>::SList(const SList& li)
+{
+	_size = li._maxIdx + 1;
+	_maxIdx = li._maxIdx;
+	if (_size > 0) {
+		arr = new T[_size];
+		for (int i = 0; i < _size; i++) {
+			arr[i] = li.at(i);
+		}
+	}
+}
+template<typename T>
 bool SList<T>::push_back(const T &ele)
 {
 	return insertAt(ele, _size);
