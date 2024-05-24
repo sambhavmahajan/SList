@@ -84,6 +84,7 @@ bool SList<T>::popAt(const T &ele, const int &index)
 	for (int i = index; i < _maxIdx; i++) {
 		arr[i] = arr[i + 1];
 	}
+	delete (arr + _maxIdx);
 	_maxIdx--;
 	return true;
 }
