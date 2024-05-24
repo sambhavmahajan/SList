@@ -70,6 +70,8 @@ int main() {
 - **Constructor & Destructor**
   - `SList()`: Initializes an empty list.
   - `~SList()`: Cleans up allocated memory.
+  - `SList(T* list, int n)`: Initialize SList with an array
+  - `SList(const SList& li)`: Create a copy of an existing SList object
 
 - **Insertion**
   - `bool push_back(const T &ele)`: Adds an element to the end of the list.
